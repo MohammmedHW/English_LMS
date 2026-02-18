@@ -13,4 +13,4 @@ cmds = [
 ]
 
 [start]
-cmd = "vendor/bin/heroku-php-apache2 public/"
+cmd = "php artisan config:clear && php artisan migrate:fresh --force && php artisan db:seed --force && vendor/bin/heroku-php-apache2 public/"
