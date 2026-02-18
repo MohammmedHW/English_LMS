@@ -31,14 +31,37 @@ class LessonController extends Controller
 
     public function progress(Request $request)
     {
-        // Placeholder for student progress
+        $student = $request->user();
+        $results = \App\Models\Result::where('student_id', $student->id)->with('lesson')->get();
+
         return response()->json([
             'status' => 'success',
             'data' => [
-                'completed_lessons' => 5,
-                'total_score' => 450,
-                'recent_results' => []
+                'completed_lessons' => $results->count(),
+                'total_score' => $results->sum('score'),
+                'recent_results' => $results
             ]
+        ]);
+    }
+
+    public function storeResult(Request $request)
+    {
+        $request->validate([
+            'lesson_id' => 'required|exists:lessons,id',
+            'score' => 'required|integer',
+        ]);
+
+        $student = $request->user();
+
+        $result = \App\Models\Result::updateOrCreate(
+            ['student_id' => $student->id, 'lesson_id' => $request->lesson_id],
+            ['score' => $request->score]
+        );
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Result saved successfully',
+            'data' => $result
         ]);
     }
 }

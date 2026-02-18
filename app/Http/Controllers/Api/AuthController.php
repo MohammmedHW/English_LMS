@@ -25,11 +25,43 @@ class AuthController extends Controller
             ], 401);
         }
 
-        // Basic token placeholder (could use Sanctum tokens if HasApiTokens is on Student)
+        $token = $student->createToken('student_token')->plainTextToken;
+
         return response()->json([
             'status' => 'success',
-            'token' => 'placeholder_token_for_flutter_app',
+            'token' => $token,
             'student' => $student
         ]);
+    }
+
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:students',
+            'phone' => 'nullable|string|max:20',
+            'password' => 'required|string|min:6',
+            'course_id' => 'required|exists:courses,id',
+        ]);
+
+        $student = Student::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => Hash::make($request->password),
+            'course_id' => $request->course_id,
+            'subscription_start' => now(),
+            'subscription_end' => now()->addDays(90), 
+            'status' => 'active',
+        ]);
+
+        $token = $student->createToken('student_token')->plainTextToken;
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Student registered successfully',
+            'token' => $token,
+            'student' => $student
+        ], 201);
     }
 }
