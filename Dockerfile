@@ -25,9 +25,9 @@ COPY . .
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# --- FIX: Fix permissions before building ---
+# Install frontend dependencies & build assets
 RUN npm install
-# Ensure the vite binary is executable
+# Ensure the vite binary is executable to prevent "Permission Denied"
 RUN chmod +x node_modules/.bin/vite
 RUN npm run build
 
@@ -45,13 +45,20 @@ RUN apt-get update && apt-get install -y \
 # Install PHP extensions
 RUN docker-php-ext-install pdo pdo_mysql mbstring zip exif pcntl
 
-# Copy ONLY the necessary files from builder to keep image slim
+# Copy everything from builder
 COPY --from=builder /var/www /var/www
+
+# --- CRITICAL: Fix Permissions for Railway ---
+# This ensures the web server can read the CSS/JS in public/build
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache /var/www/public
 
 # Expose Railway port
 ENV PORT=8080
 EXPOSE 8080
 
+# Switch to non-root user for better security and file handling
+USER www-data
+
 # Start Laravel
-# Using "sh -c" helps ensure environment variables like $PORT are parsed correctly
-CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT
+# We use sh -c to ensure the $PORT variable is correctly injected by Railway
+CMD sh -c "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT"
