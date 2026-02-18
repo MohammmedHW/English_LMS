@@ -1,0 +1,16 @@
+[phases.setup]
+nixPkgs = ["php", "nodejs"]
+
+[phases.install]
+cmds = [
+  "composer install --no-dev --optimize-autoloader",
+  "npm install"
+]
+
+[phases.build]
+cmds = [
+  "npm run build"
+]
+
+[start]
+cmd = "vendor/bin/heroku-php-apache2 public/"

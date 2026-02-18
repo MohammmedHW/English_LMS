@@ -8,4 +8,6 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    // Use the full URL in production so CSS loads correctly
+    base: process.env.APP_URL ? process.env.APP_URL + '/build/' : '/build/',
 });
