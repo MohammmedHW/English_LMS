@@ -35,5 +35,20 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+
+Route::get('/fix-admin', function () {
+    $user = User::where('email', 'admin@gmail.com')->first();
+
+    if (!$user) {
+        return 'User not found';
+    }
+
+    $user->password = Hash::make('123456');
+    $user->save();
+
+    return 'Password Updated Successfully';
+});
 
 require __DIR__.'/auth.php';
