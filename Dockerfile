@@ -1,6 +1,6 @@
 FROM php:8.4-cli
 
-# Install system dependencies
+# Install system dependencies + Node.js
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
@@ -34,13 +34,13 @@ RUN php artisan key:generate || true
 RUN npm install
 RUN npm run build
 
-# Clear caches
+# Clear Laravel caches
 RUN php artisan config:clear
 RUN php artisan cache:clear
 RUN php artisan view:clear
 
 # Expose port
-EXPOSE 8000
+EXPOSE 8080
 
 # Start Laravel
 CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT
