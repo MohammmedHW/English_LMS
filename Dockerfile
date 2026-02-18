@@ -5,11 +5,18 @@ FROM php:8.4-cli AS builder
 
 WORKDIR /var/www
 
-# Install system dependencies
+# Install system dependencies (IMPORTANT: libonig-dev added)
 RUN apt-get update && apt-get install -y \
-    git unzip libzip-dev libpng-dev libonig-dev libxml2-dev zip curl
+    git \
+    unzip \
+    curl \
+    zip \
+    libzip-dev \
+    libpng-dev \
+    libxml2-dev \
+    libonig-dev
 
-# Install Node.js properly (NodeSource - IMPORTANT)
+# Install Node 20 properly
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs
 
@@ -41,10 +48,17 @@ FROM php:8.4-cli
 
 WORKDIR /var/www
 
-# Install required PHP extensions again
+# Install runtime dependencies (IMPORTANT AGAIN)
+RUN apt-get update && apt-get install -y \
+    libzip-dev \
+    libpng-dev \
+    libxml2-dev \
+    libonig-dev
+
+# Install PHP extensions
 RUN docker-php-ext-install pdo pdo_mysql mbstring zip exif pcntl
 
-# Copy built app from builder
+# Copy built app
 COPY --from=builder /var/www /var/www
 
 # Expose Railway port
