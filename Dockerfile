@@ -4,7 +4,8 @@ FROM php:8.4-cli AS builder
 WORKDIR /var/www
 
 # Install dependencies + Node
-RUN apt-get update && apt-get install -y git unzip libzip-dev libpng-dev libonig-dev libxml2-dev zip curl nodejs npm
+RUN apt-get update && apt-get install -y \
+    git unzip libzip-dev libpng-dev libonig-dev libxml2-dev zip curl nodejs npm
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo pdo_mysql mbstring zip exif pcntl
@@ -15,7 +16,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Copy app
 COPY . .
 
-# PHP dependencies
+# Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
 # Build Vite assets
@@ -27,7 +28,7 @@ RUN php artisan config:clear
 RUN php artisan cache:clear
 RUN php artisan view:clear
 
-# Stage 2: Production image with PHP-FPM + Nginx
+# Stage 2: Production image with PHP-FPM only
 FROM php:8.4-fpm
 
 WORKDIR /var/www
@@ -35,17 +36,8 @@ WORKDIR /var/www
 # Copy built app from builder
 COPY --from=builder /var/www /var/www
 
-# Install Nginx
-RUN apt-get update && apt-get install -y nginx
-
-# Remove default Nginx config
-RUN rm /etc/nginx/sites-enabled/default
-
-# Add custom Nginx config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
 # Expose port 8080
 EXPOSE 8080
 
-# Start PHP-FPM + Nginx
-CMD ["sh", "-c", "php-fpm -D && nginx -g 'daemon off;'"]
+# Start PHP-FPM only
+CMD ["php-fpm", "-F"]
