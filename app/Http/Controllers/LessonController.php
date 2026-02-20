@@ -3,30 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lesson;
-use App\Models\Level;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
 {
     public function index()
     {
-        $lessons = Lesson::with('level.course')->get();
+        $lessons = Lesson::with('course.level')->get();
         return view('admin.lessons.index', compact('lessons'));
     }
 
     public function create()
     {
-        $levels = Level::with('course')->get();
-        return view('admin.lessons.create', compact('levels'));
+        $courses = Course::with('level')->get();
+        return view('admin.lessons.create', compact('courses'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'level_id' => 'required|exists:levels,id',
-            'day_number' => 'required|integer',
+            'course_id' => 'required|exists:courses,id',
             'title' => 'required|string|max:255',
-            'video_url' => 'nullable|url',
+            'order' => 'required|integer',
+            'pass_score' => 'required|integer|min:0|max:100',
         ]);
 
         Lesson::create($request->all());
@@ -36,17 +36,17 @@ class LessonController extends Controller
 
     public function edit(Lesson $lesson)
     {
-        $levels = Level::with('course')->get();
-        return view('admin.lessons.edit', compact('lesson', 'levels'));
+        $courses = Course::with('level')->get();
+        return view('admin.lessons.edit', compact('lesson', 'courses'));
     }
 
     public function update(Request $request, Lesson $lesson)
     {
         $request->validate([
-            'level_id' => 'required|exists:levels,id',
-            'day_number' => 'required|integer',
+            'course_id' => 'required|exists:courses,id',
             'title' => 'required|string|max:255',
-            'video_url' => 'nullable|url',
+            'order' => 'required|integer',
+            'pass_score' => 'required|integer|min:0|max:100',
         ]);
 
         $lesson->update($request->all());

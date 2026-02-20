@@ -8,42 +8,54 @@
     <a href="{{ route('lessons.create') }}" class="btn btn-primary"><i class="fas fa-plus me-2"></i>Add Lesson</a>
 </div>
 
-<div class="card">
+<div class="card border-0 shadow-sm rounded-4">
     <div class="card-body p-0">
         <div class="table-responsive">
-            <table class="table table-hover mb-0">
+            <table class="table table-hover align-middle mb-0">
                 <thead class="bg-light">
                     <tr>
-                        <th class="px-4 py-3">Day</th>
+                        <th class="px-4 py-3">Order</th>
                         <th class="px-4 py-3">Title</th>
-                        <th class="px-4 py-3">Level / Course</th>
-                        <th class="px-4 py-3">Video</th>
-                        <th class="px-4 py-3">Actions</th>
+                        <th class="px-4 py-3">Course / Level</th>
+                        <th class="px-4 py-3">Pass Score</th>
+                        <th class="px-4 py-3 text-end">Manage Content</th>
+                        <th class="px-4 py-3 text-end">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($lessons as $lesson)
+                    @forelse($lessons as $lesson)
                     <tr>
-                        <td class="px-4 py-3">Day {{ $lesson->day_number }}</td>
-                        <td class="px-4 py-3 fw-medium">{{ $lesson->title }}</td>
-                        <td class="px-4 py-3">{{ $lesson->level->name }} / {{ $lesson->level->course->title }}</td>
+                        <td class="px-4 py-3 text-muted">#{{ $lesson->order }}</td>
+                        <td class="px-4 py-3 fw-bold">{{ $lesson->title }}</td>
                         <td class="px-4 py-3">
-                            @if($lesson->video_url)
-                                <a href="{{ $lesson->video_url }}" target="_blank"><i class="fab fa-youtube text-danger"></i> Link</a>
-                            @else
-                                <span class="text-muted">No Video</span>
-                            @endif
+                            <div class="fw-semibold">{{ $lesson->course->title }}</div>
+                            <div class="small text-muted">{{ $lesson->course->level->name ?? 'N/A' }}</div>
                         </td>
                         <td class="px-4 py-3">
-                            <a href="{{ route('lessons.edit', $lesson) }}" class="btn btn-sm btn-outline-primary me-2"><i class="fas fa-edit"></i></a>
+                            <span class="badge badge-soft-primary">{{ $lesson->pass_score }}%</span>
+                        </td>
+                        <td class="px-4 py-3 text-end">
+                            <a href="{{ route('lessons.exercises.index', $lesson) }}" class="btn btn-sm btn-outline-success me-1" title="Practice Exercises">
+                                <i class="fas fa-dumbell"></i> Exercises
+                            </a>
+                            <a href="{{ route('lessons.test_questions.index', $lesson) }}" class="btn btn-sm btn-outline-warning" title="Final Test">
+                                <i class="fas fa-file-signature"></i> Test
+                            </a>
+                        </td>
+                        <td class="px-4 py-3 text-end">
+                            <a href="{{ route('lessons.edit', $lesson) }}" class="btn btn-sm btn-light text-muted me-2" title="Edit"><i class="fas fa-pen"></i></a>
                             <form action="{{ route('lessons.destroy', $lesson) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i></button>
+                                <button type="submit" class="btn btn-sm btn-light text-danger" title="Delete" onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i></button>
                             </form>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td colspan="6" class="text-center py-5 text-muted">No lessons found.</td>
+                    </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

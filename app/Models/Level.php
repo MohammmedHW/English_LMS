@@ -9,18 +9,10 @@ class Level extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'course_id',
-        'name',
-    ];
+    protected $fillable = ['name'];
 
-    public function course()
+    public function courses()
     {
-        return $this->belongsTo(Course::class);
-    }
-
-    public function lessons()
-    {
-        return $this->hasMany(Lesson::class);
+        return $this->hasMany(Course::class);
     }
 }

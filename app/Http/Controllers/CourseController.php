@@ -3,28 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Level;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
     public function index()
     {
-        $courses = Course::all();
+        $courses = Course::with('level')->get();
         return view('admin.courses.index', compact('courses'));
     }
 
     public function create()
     {
-        return view('admin.courses.create');
+        $levels = Level::all();
+        return view('admin.courses.create', compact('levels'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
+            'level_id' => 'required|exists:levels,id',
             'title' => 'required|string|max:255',
-            'duration_days' => 'required|integer|in:90,180',
-            'price' => 'required|numeric',
             'description' => 'nullable|string',
+            'image' => 'nullable|string',
         ]);
 
         Course::create($request->all());
@@ -34,16 +36,17 @@ class CourseController extends Controller
 
     public function edit(Course $course)
     {
-        return view('admin.courses.edit', compact('course'));
+        $levels = Level::all();
+        return view('admin.courses.edit', compact('course', 'levels'));
     }
 
     public function update(Request $request, Course $course)
     {
         $request->validate([
+            'level_id' => 'required|exists:levels,id',
             'title' => 'required|string|max:255',
-            'duration_days' => 'required|integer|in:90,180',
-            'price' => 'required|numeric',
             'description' => 'nullable|string',
+            'image' => 'nullable|string',
         ]);
 
         $course->update($request->all());

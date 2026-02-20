@@ -26,18 +26,14 @@
     <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
         <div class="card-header bg-white border-bottom-0 py-4 px-4 d-flex justify-content-between align-items-center">
             <h5 class="mb-0 fw-bold">Active Courses</h5>
-            <div class="input-group w-25">
-                <span class="input-group-text bg-light border-end-0 border-light px-3"><i class="fas fa-search text-muted small"></i></span>
-                <input type="text" class="form-control bg-light border-start-0 border-light small px-2" placeholder="Search courses...">
-            </div>
         </div>
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
                 <thead class="bg-light">
                     <tr>
-                        <th class="ps-4 py-3 text-muted small font-outfit text-uppercase tracking-wider">Course Info</th>
-                        <th class="py-3 text-muted small font-outfit text-uppercase tracking-wider">Duration</th>
-                        <th class="py-3 text-muted small font-outfit text-uppercase tracking-wider">Pricing</th>
+                        <th class="ps-4 py-3 text-muted small font-outfit text-uppercase tracking-wider">Course Title</th>
+                        <th class="py-3 text-muted small font-outfit text-uppercase tracking-wider">Level</th>
+                        <th class="py-3 text-muted small font-outfit text-uppercase tracking-wider">Lessons</th>
                         <th class="pe-4 py-3 text-muted small font-outfit text-uppercase tracking-wider text-end">Manage</th>
                     </tr>
                 </thead>
@@ -51,18 +47,19 @@
                                 </div>
                                 <div>
                                     <div class="fw-bold text-dark ">{{ $course->title }}</div>
-                                    <div class="text-muted small">Updated 2 days ago</div>
+                                    <div class="text-muted small">{{ Str::limit($course->description, 50) }}</div>
                                 </div>
                             </div>
                         </td>
                         <td>
                             <span class="badge badge-soft-primary">
-                                <i class="fas fa-calendar-alt me-1"></i> {{ $course->duration_days }} Days
+                                <i class="fas fa-layer-group me-1"></i> {{ $course->level->name ?? 'N/A' }}
                             </span>
                         </td>
                         <td>
-                            <div class="fw-bold text-dark fs-5">${{ number_format($course->price, 2) }}</div>
-                            <div class="text-muted extra-small fw-bold text-uppercase" style="font-size: 10px;">One-time payment</div>
+                            <span class="badge badge-soft-success">
+                                <i class="fas fa-circle-play me-1"></i> {{ $course->lessons->count() }}
+                            </span>
                         </td>
                         <td class="pe-4 text-end">
                             <div class="d-flex justify-content-end gap-2">
@@ -93,7 +90,6 @@
         <div class="card-footer bg-white border-top-0 py-4 px-4">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="small text-muted">Showing {{ $courses->count() }} courses</div>
-                <div class="small text-muted">All courses are active</div>
             </div>
         </div>
     </div>

@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
-use App\Models\Course;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -11,59 +10,59 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $students = Student::with('course')->get();
+        $students = User::where('role', 'student')->get();
         return view('admin.students.index', compact('students'));
     }
 
     public function create()
     {
-        $courses = Course::all();
-        return view('admin.students.create', compact('courses'));
+        return view('admin.students.create');
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:students,email',
+            'email' => 'required|email|unique:users,email',
             'phone' => 'nullable|string',
             'password' => 'required|min:6',
-            'course_id' => 'required|exists:courses,id',
-            'subscription_start' => 'nullable|date',
-            'subscription_end' => 'nullable|date',
         ]);
 
-        $data = $request->all();
-        $data['password'] = Hash::make($request->password);
-
-        Student::create($data);
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => Hash::make($request->password),
+            'role' => 'student',
+        ]);
 
         return redirect()->route('students.index')->with('success', 'Student created successfully.');
     }
 
-    public function edit(Student $student)
+    public function edit($id)
     {
-        $courses = Course::all();
-        return view('admin.students.edit', compact('student', 'courses'));
+        $student = User::findOrFail($id);
+        return view('admin.students.edit', compact('student'));
     }
 
-    public function update(Request $request, Student $student)
+    public function update(Request $request, $id)
     {
+        $student = User::findOrFail($id);
+
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:students,email,' . $student->id,
+            'email' => 'required|email|unique:users,email,' . $student->id,
             'phone' => 'nullable|string',
-            'course_id' => 'required|exists:courses,id',
-            'subscription_start' => 'nullable|date',
-            'subscription_end' => 'nullable|date',
-            'status' => 'required|in:active,inactive',
         ]);
 
-        $data = $request->all();
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+        ];
+
         if ($request->filled('password')) {
             $data['password'] = Hash::make($request->password);
-        } else {
-            unset($data['password']);
         }
 
         $student->update($data);
@@ -71,8 +70,9 @@ class StudentController extends Controller
         return redirect()->route('students.index')->with('success', 'Student updated successfully.');
     }
 
-    public function destroy(Student $student)
+    public function destroy($id)
     {
+        $student = User::findOrFail($id);
         $student->delete();
         return redirect()->route('students.index')->with('success', 'Student deleted successfully.');
     }

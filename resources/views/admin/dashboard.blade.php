@@ -94,15 +94,15 @@
                         <i class="fas fa-certificate fs-4"></i>
                     </div>
                     <div>
-                        <div class="text-muted small fw-bold text-uppercase tracking-wider">Active Subs</div>
-                        <div class="h3 fw-bold mb-0">{{ $activeSubscriptions }}</div>
+                        <div class="text-muted small fw-bold text-uppercase tracking-wider">Active Users</div>
+                        <div class="h3 fw-bold mb-0">{{ $activeStudents }}</div>
                     </div>
                 </div>
                 <div class="d-flex align-items-center mt-auto">
                     <span class="badge badge-soft-primary me-2" style="background: rgba(239, 68, 68, 0.1); color: var(--danger);">
-                        <i class="fas fa-bolt me-1"></i> Priority
+                        <i class="fas fa-bolt me-1"></i> Verified
                     </span>
-                    <span class="small text-muted">Current billing</span>
+                    <span class="small text-muted">Email verified</span>
                 </div>
             </div>
         </div>

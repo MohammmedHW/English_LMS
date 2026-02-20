@@ -4,67 +4,46 @@
 
 @section('content')
 <div class="row justify-content-center">
-    <div class="col-md-10">
-        <div class="card">
-            <div class="card-header">Edit Student: {{ $student->name }}</div>
+    <div class="col-md-8">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-header bg-white border-bottom-0 py-3">
+                <h5 class="mb-0 fw-bold">Edit Student: {{ $student->name }}</h5>
+            </div>
             <div class="card-body">
-                <form action="{{ route('students.update', $student) }}" method="POST">
+                <form action="{{ route('students.update', $student->id) }}" method="POST">
                     @csrf
                     @method('PUT')
-                    <div class="row mb-3">
+                    
+                    <div class="row mb-4">
                         <div class="col-md-6">
-                            <label class="form-label">Full Name</label>
+                            <label class="form-label fw-semibold">Full Name</label>
                             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ $student->name }}" required>
                             @error('name') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Email Address</label>
+                            <label class="form-label fw-semibold">Email Address</label>
                             <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ $student->email }}" required>
                             @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
                     </div>
-                    <div class="row mb-3">
+
+                    <div class="row mb-4">
                         <div class="col-md-6">
-                            <label class="form-label">Phone Number</label>
-                            <input type="text" name="phone" class="form-control" value="{{ $student->phone }}">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Status</label>
-                            <select name="status" class="form-select">
-                                <option value="active" {{ $student->status == 'active' ? 'selected' : '' }}>Active</option>
-                                <option value="inactive" {{ $student->status == 'inactive' ? 'selected' : '' }}>Inactive</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-12">
-                            <label class="form-label">Assign Course</label>
-                            <select name="course_id" class="form-select @error('course_id') is-invalid @enderror" required>
-                                @foreach($courses as $course)
-                                    <option value="{{ $course->id }}" {{ $student->course_id == $course->id ? 'selected' : '' }}>{{ $course->title }}</option>
-                                @endforeach
-                            </select>
-                            @error('course_id') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label class="form-label">Subscription Start</label>
-                            <input type="date" name="subscription_start" class="form-control" value="{{ $student->subscription_start }}">
+                            <label class="form-label fw-semibold">Phone Number (Optional)</label>
+                            <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ $student->phone }}" placeholder="+1 234 567 890">
+                            @error('phone') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Subscription End</label>
-                            <input type="date" name="subscription_end" class="form-control" value="{{ $student->subscription_end }}">
+                            <label class="form-label fw-semibold">New Password (Optional)</label>
+                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Leave blank to keep current">
+                            <div class="form-text small text-muted">Must be at least 6 characters if changing.</div>
+                            @error('password') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Update Password (Leave blank to keep current)</label>
-                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror">
-                        @error('password') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                    </div>
-                    <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-success btn-lg">Update Student</button>
-                        <a href="{{ route('students.index') }}" class="btn btn-light">Cancel</a>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{{ route('students.index') }}" class="btn btn-light me-md-2">Cancel</a>
+                        <button type="submit" class="btn btn-primary px-4">Update Student</button>
                     </div>
                 </form>
             </div>

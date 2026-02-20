@@ -231,17 +231,14 @@
                 <li class="{{ request()->is('admin/courses*') ? 'active' : '' }}">
                     <a href="{{ route('courses.index') }}"><i class="fas fa-book-open"></i> Courses</a>
                 </li>
-                <li class="{{ request()->is('admin/levels*') ? 'active' : '' }}">
-                    <a href="{{ route('levels.index') }}"><i class="fas fa-layer-group"></i> Levels</a>
-                </li>
                 <li class="{{ request()->is('admin/lessons*') ? 'active' : '' }}">
                     <a href="{{ route('lessons.index') }}"><i class="fas fa-circle-play"></i> Lessons</a>
                 </li>
-                <li class="{{ request()->is('admin/quizzes*') ? 'active' : '' }}">
-                    <a href="{{ route('quizzes.index') }}"><i class="fas fa-vial-circle-check"></i> Quizzes</a>
-                </li>
                 <li class="{{ request()->is('admin/students*') ? 'active' : '' }}">
                     <a href="{{ route('students.index') }}"><i class="fas fa-user-group"></i> Students</a>
+                </li>
+                <li class="{{ request()->is('admin/levels*') ? 'active' : '' }}">
+                    <a href="{{ route('levels.index') }}"><i class="fas fa-layer-group"></i> Levels</a>
                 </li>
                 <li class="mt-5 pt-5 border-top" style="opacity: 0.6">
                     <form method="POST" action="{{ route('logout') }}">

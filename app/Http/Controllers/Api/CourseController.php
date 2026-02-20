@@ -3,26 +3,33 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Course;
 use App\Models\Level;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    public function index()
+    /**
+     * Get all levels (Junior, School, College)
+     */
+    public function levels()
     {
-        return response()->json([
-            'status' => 'success',
-            'data' => Course::all()
-        ]);
-    }
-
-    public function levels($course_id)
-    {
-        $levels = Level::where('course_id', $course_id)->get();
+        $levels = Level::all();
         return response()->json([
             'status' => 'success',
             'data' => $levels
+        ]);
+    }
+
+    /**
+     * Get courses for a specific level
+     */
+    public function index($level_id)
+    {
+        $courses = Course::where('level_id', $level_id)->get();
+        return response()->json([
+            'status' => 'success',
+            'data' => $courses
         ]);
     }
 }

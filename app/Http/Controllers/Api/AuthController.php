@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -16,21 +17,28 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $student = Student::where('email', $request->email)->first();
+        $user = User::where('email', $request->email)->first();
 
-        if (!$student || !Hash::check($request->password, $student->password)) {
+        if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Invalid credentials'
             ], 401);
         }
 
-        $token = $student->createToken('student_token')->plainTextToken;
+        if ($user->role !== 'student') {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Access denied'
+            ], 403);
+        }
+
+        $token = $user->createToken('student_token')->plainTextToken;
 
         return response()->json([
             'status' => 'success',
             'token' => $token,
-            'student' => $student
+            'user' => $user
         ]);
     }
 
@@ -38,30 +46,32 @@ class AuthController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:students',
+            'email' => 'required|string|email|max:255|unique:users',
             'phone' => 'nullable|string|max:20',
             'password' => 'required|string|min:6',
-            'course_id' => 'required|exists:courses,id',
         ]);
 
-        $student = Student::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
-            'course_id' => $request->course_id,
-            'subscription_start' => now(),
-            'subscription_end' => now()->addDays(90), 
-            'status' => 'active',
+            'role' => 'student',
         ]);
 
-        $token = $student->createToken('student_token')->plainTextToken;
+        $token = $user->createToken('student_token')->plainTextToken;
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Student registered successfully',
+            'message' => 'User registered successfully',
             'token' => $token,
-            'student' => $student
+            'user' => $user
         ], 201);
+    }
+
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+        return response()->json(['status' => 'success', 'message' => 'Logged out']);
     }
 }
