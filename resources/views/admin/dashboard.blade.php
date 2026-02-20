@@ -44,47 +44,6 @@
             </div>
         </div>
 
-        <!-- Courses Card -->
-        <div class="col-xl-3 col-md-6">
-            <div class="card p-4 border-0 shadow-sm overflow-hidden h-100">
-                <div class="d-flex align-items-center mb-4">
-                    <div class="rounded-4 d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; background: rgba(16, 185, 129, 0.1); color: var(--secondary);">
-                        <i class="fas fa-book-open fs-4"></i>
-                    </div>
-                    <div>
-                        <div class="text-muted small fw-bold text-uppercase tracking-wider">Courses</div>
-                        <div class="h3 fw-bold mb-0">{{ $totalCourses }}</div>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center mt-auto">
-                    <span class="badge badge-soft-success me-2">
-                        <i class="fas fa-layer-group me-1"></i> Public
-                    </span>
-                    <span class="small text-muted">Available courses</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Lessons Card -->
-        <div class="col-xl-3 col-md-6">
-            <div class="card p-4 border-0 shadow-sm overflow-hidden h-100">
-                <div class="d-flex align-items-center mb-4">
-                    <div class="rounded-4 d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; background: rgba(245, 158, 11, 0.1); color: var(--warning);">
-                        <i class="fas fa-circle-play fs-4"></i>
-                    </div>
-                    <div>
-                        <div class="text-muted small fw-bold text-uppercase tracking-wider">Total Lessons</div>
-                        <div class="h3 fw-bold mb-0">{{ $totalLessons }}</div>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center mt-auto">
-                    <span class="badge badge-soft-primary me-2" style="background: rgba(245, 158, 11, 0.1); color: var(--warning);">
-                        <i class="fas fa-clock-rotate-left me-1"></i> Scheduled
-                    </span>
-                    <span class="small text-muted">Video modules</span>
-                </div>
-            </div>
-        </div>
 
         <!-- Subscriptions Card -->
         <div class="col-xl-3 col-md-6">
@@ -117,22 +76,10 @@
                     <a href="#" class="btn btn-sm btn-light border px-3 rounded-3 fw-semibold small">View All</a>
                 </div>
                 <div class="row g-3">
-                    <div class="col-md-4 text-center">
-                        <a href="{{ route('courses.create') }}" class="text-decoration-none bg-light d-block p-4 rounded-4 border border-dashed transition-all hover-primary">
-                            <i class="fas fa-plus-circle text-primary fs-3 mb-2"></i>
-                            <div class="small fw-bold text-dark">Add Course</div>
-                        </a>
-                    </div>
-                    <div class="col-md-4 text-center">
+                    <div class="col-md-12 text-center">
                         <a href="{{ route('students.create') }}" class="text-decoration-none bg-light d-block p-4 rounded-4 border border-dashed transition-all hover-primary">
                             <i class="fas fa-user-plus text-primary fs-3 mb-2"></i>
                             <div class="small fw-bold text-dark">Enroll Student</div>
-                        </a>
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <a href="{{ route('lessons.create') }}" class="text-decoration-none bg-light d-block p-4 rounded-4 border border-dashed transition-all hover-primary">
-                            <i class="fas fa-video text-primary fs-3 mb-2"></i>
-                            <div class="small fw-bold text-dark">Upload Lesson</div>
                         </a>
                     </div>
                 </div>

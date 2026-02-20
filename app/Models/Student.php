@@ -16,7 +16,6 @@ class Student extends Model
         'email',
         'phone',
         'password',
-        'course_id',
         'subscription_start',
         'subscription_end',
         'status',
@@ -26,13 +25,4 @@ class Student extends Model
         'password',
     ];
 
-    public function course()
-    {
-        return $this->belongsTo(Course::class);
-    }
-
-    public function results()
-    {
-        return $this->hasMany(Result::class);
-    }
 }

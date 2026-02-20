@@ -24,7 +24,6 @@ class User extends Authenticatable
         'password',
         'phone',
         'role',
-        'course_id',
     ];
 
     /**
@@ -36,11 +35,6 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-    
-    public function course()
-    {
-        return $this->belongsTo(\App\Models\Course::class);
-    }
 
     /**
      * Get the attributes that should be cast.
