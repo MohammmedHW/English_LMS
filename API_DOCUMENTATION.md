@@ -31,7 +31,9 @@ This document provides the API endpoints for the Flutter application to interact
         "name": "Jane Doe",
         "email": "student@example.com",
         "role": "student",
-        "phone": "1234567890"
+        "phone": "1234567890",
+        "email_verified_at": null,
+        "course_id": null
     }
 }
 ```
@@ -60,6 +62,7 @@ This document provides the API endpoints for the Flutter application to interact
         "id": 2,
         "name": "Alex Smith",
         "email": "alex@example.com",
+        "phone": "9876543210",
         "role": "student"
     }
 }
@@ -162,7 +165,7 @@ This document provides the API endpoints for the Flutter application to interact
 **Header:** `Authorization: Bearer {token}`  
 **Description:** Fetch all practice exercises for a lesson.
 
-**Response:**
+**Response Structure (Data):**
 ```json
 {
     "status": "success",
@@ -170,13 +173,50 @@ This document provides the API endpoints for the Flutter application to interact
         {
             "id": 1,
             "type": "Multiple Choice",
-            "question": "Select the correct option...",
-            "options": ["A", "B", "C", "D"],
-            "answer": "A"
+            "question": "What is the capital of France?",
+            "options": ["London", "Paris", "Berlin", "Madrid"],
+            "answer": "Paris"
+        },
+        {
+            "id": 2,
+            "type": "Match the Pair",
+            "question": "Match colors with objects",
+            "options": [
+                {"left": "Red", "right": "Apple"},
+                {"left": "Blue", "right": "Sky"},
+                {"left": "Green", "right": "Grass"}
+            ],
+            "answer": "pairs"
+        },
+        {
+            "id": 3,
+            "type": "True/False",
+            "question": "Water boils at 100 degrees Celsius.",
+            "options": null,
+            "answer": "True"
+        },
+        {
+            "id": 4,
+            "type": "Fill in the Blank",
+            "question": "She ___ to school every day.",
+            "options": null,
+            "answer": "goes"
         }
     ]
 }
 ```
+
+#### Question Types Detail:
+
+| Type | Question Field Usage | Options Structure | Answer Field |
+| :--- | :--- | :--- | :--- |
+| **Multiple Choice** | The main question. | `["A", "B", "C", "D"]` | The correct string. |
+| **True/False** | A statement. | `null` | `"True"` or `"False"`. |
+| **Fill in the Blank**| Use `___` for the gap. | `null` | The missing word. |
+| **Complete the Sentence** | The start of a sentence. | `["Option A", "Option B"]`| The finishing part. |
+| **Match the Pair** | Instructions. | `[{"left": "A", "right": "B"}]` | `"pairs"` (static). |
+
+---
 
 #### Complete Exercises
 **Endpoint:** `POST /lesson/{id}/complete-exercises`  
@@ -197,22 +237,8 @@ This document provides the API endpoints for the Flutter application to interact
 **Endpoint:** `GET /lesson/{id}/test`  
 **Header:** `Authorization: Bearer {token}`  
 **Description:** Fetch questions for the final test. Fails if exercises not completed or test is locked.
+**Response Structure:** Same as Practice Mode.
 
-**Response:**
-```json
-{
-    "status": "success",
-    "data": [
-        {
-            "id": 5,
-            "type": "Multiple Choice",
-            "question": "Final Question 1...",
-            "options": ["Thinking", "Doing", "Being"],
-            "answer": "Thinking"
-        }
-    ]
-}
-```
 
 #### Submit Test
 **Endpoint:** `POST /lesson/{id}/submit-test`  
@@ -274,7 +300,7 @@ This document provides the API endpoints for the Flutter application to interact
 {
     "name": "Jane Updated",
     "phone": "0987654321",
-    "password": "newpassword123" 
+    "password": "optional_new_password" 
 }
 ```
 
@@ -285,3 +311,28 @@ This document provides the API endpoints for the Flutter application to interact
     "message": "Profile updated successfully"
 }
 ```
+
+---
+
+## 5. Common Error Responses
+
+| Status Code | Description | Example Message |
+| :--- | :--- | :--- |
+| **401** | Unauthorized | "Unauthenticated." |
+| **403** | Forbidden | "You must complete exercises before taking the test." |
+| **404** | Not Found | "Course not found." |
+| **422** | Unprocessable Entity | "The email has already been taken." |
+
+---
+
+## 6. Question Matching Logic (Flutter Side)
+
+To ensure the Flutter app validates answers correctly, follow these rules:
+
+1.  **Multiple Choice**: Case-sensitive string match between user selection and `answer`.
+2.  **True/False**: Match against strings `"True"` or `"False"`.
+3.  **Fill in the Blank**: Case-insensitive string match recommended.
+4.  **Match the Pair**: The student is correct if they match all `left` items to their corresponding `right` items as provided in the `options` array. (Note: Server currently stores `"pairs"` as the placeholder answer).
+
+---
+*Created by AI Developer Assistant — Refined Feb 2026*
