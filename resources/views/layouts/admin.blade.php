@@ -231,6 +231,9 @@
                 <li class="{{ request()->is('admin/students*') ? 'active' : '' }}">
                     <a href="{{ route('students.index') }}"><i class="fas fa-user-group"></i> Students</a>
                 </li>
+                <li class="{{ request()->is('admin/plans*') ? 'active' : '' }}">
+                    <a href="{{ route('plans.index') }}"><i class="fas fa-credit-card"></i> Subscription Plans</a>
+                </li>
                 <li class="mt-5 pt-5 border-top" style="opacity: 0.6">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf

@@ -9,9 +9,6 @@
             <h1 class="h3 mb-1">Subscription Plans</h1>
             <p class="text-muted">Manage the pricing and duration of your subscription tiers.</p>
         </div>
-        <a href="{{ route('plans.create') }}" class="btn btn-primary rounded-pill px-4">
-            <i class="fas fa-plus me-2"></i> Add New Plan
-        </a>
     </div>
 
     @if(session('success'))

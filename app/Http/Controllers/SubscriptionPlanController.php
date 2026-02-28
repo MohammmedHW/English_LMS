@@ -46,7 +46,7 @@ class SubscriptionPlanController extends Controller
             'description' => 'nullable|string',
         ]);
 
-        $plan->update($request->all());
+        $plan->update($request->validated());
 
         return redirect()->route('plans.index')->with('success', 'Subscription plan updated successfully.');
     }
