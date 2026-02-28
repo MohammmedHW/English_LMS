@@ -84,7 +84,7 @@
                     <div class="col-md-6 text-center">
                         <a href="{{ route('plans.index') }}" class="text-decoration-none bg-light d-block p-4 rounded-4 border border-dashed transition-all hover-primary h-100">
                             <i class="fas fa-credit-card text-success fs-3 mb-2"></i>
-                            <div class="small fw-bold text-dark">Manage Plans</div>
+                            <div class="small fw-bold text-dark">View Plans</div>
                         </a>
                     </div>
                 </div>
