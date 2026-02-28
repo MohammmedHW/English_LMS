@@ -76,10 +76,15 @@
                     <a href="#" class="btn btn-sm btn-light border px-3 rounded-3 fw-semibold small">View All</a>
                 </div>
                 <div class="row g-3">
-                    <div class="col-md-12 text-center">
-                        <a href="{{ route('students.create') }}" class="text-decoration-none bg-light d-block p-4 rounded-4 border border-dashed transition-all hover-primary">
+                        <a href="{{ route('students.create') }}" class="text-decoration-none bg-light d-block p-4 rounded-4 border border-dashed transition-all hover-primary h-100">
                             <i class="fas fa-user-plus text-primary fs-3 mb-2"></i>
                             <div class="small fw-bold text-dark">Enroll Student</div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <a href="{{ route('plans.index') }}" class="text-decoration-none bg-light d-block p-4 rounded-4 border border-dashed transition-all hover-primary h-100">
+                            <i class="fas fa-credit-card text-success fs-3 mb-2"></i>
+                            <div class="small fw-bold text-dark">Manage Plans</div>
                         </a>
                     </div>
                 </div>
