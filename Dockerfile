@@ -61,4 +61,4 @@ USER www-data
 
 # Start Laravel
 # We use sh -c to ensure the $PORT variable is correctly injected by Railway
-CMD sh -c "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT"
+CMD sh -c "php artisan migrate --force && php artisan db:seed --class=SubscriptionPlanSeeder --force && php artisan serve --host=0.0.0.0 --port=$PORT"
