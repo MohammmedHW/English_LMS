@@ -24,7 +24,20 @@ class User extends Authenticatable
         'password',
         'phone',
         'role',
+        'subscription_plan_id',
+        'subscription_expires_at',
+        'current_level',
     ];
+
+    public function subscriptionPlan()
+    {
+        return $this->belongsTo(SubscriptionPlan::class);
+    }
+
+    public function progress()
+    {
+        return $this->hasMany(UserProgress::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

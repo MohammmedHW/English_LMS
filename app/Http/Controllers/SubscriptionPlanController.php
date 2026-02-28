@@ -2,64 +2,58 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\SubscriptionPlan;
 use Illuminate\Http\Request;
 
 class SubscriptionPlanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $plans = SubscriptionPlan::all();
+        return view('admin.plans.index', compact('plans'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('admin.plans.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'duration_days' => 'required|integer|min:1',
+            'price' => 'required|numeric|min:0',
+            'description' => 'nullable|string',
+        ]);
+
+        SubscriptionPlan::create($request->all());
+
+        return redirect()->route('plans.index')->with('success', 'Subscription plan created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit(SubscriptionPlan $plan)
     {
-        //
+        return view('admin.plans.edit', compact('plan'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $request, SubscriptionPlan $plan)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'duration_days' => 'required|integer|min:1',
+            'price' => 'required|numeric|min:0',
+            'description' => 'nullable|string',
+        ]);
+
+        $plan->update($request->all());
+
+        return redirect()->route('plans.index')->with('success', 'Subscription plan updated successfully.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy(SubscriptionPlan $plan)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $plan->delete();
+        return redirect()->route('plans.index')->with('success', 'Subscription plan deleted successfully.');
     }
 }

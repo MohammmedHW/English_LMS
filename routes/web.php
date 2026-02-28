@@ -26,6 +26,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
     // Students (Users)
     Route::resource('students', StudentController::class);
+
+    // Subscription Plans
+    Route::resource('plans', \App\Http\Controllers\SubscriptionPlanController::class);
 });
 
 Route::middleware('auth')->group(function () {

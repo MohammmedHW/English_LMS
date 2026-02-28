@@ -16,4 +16,16 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/profile', [StudentController::class , 'profile']);
     Route::put('/update-profile', [StudentController::class , 'updateProfile']);
+
+    // Subscription Plans
+    Route::get('/plans', [\App\Http\Controllers\Api\PlanController::class , 'index']);
+    Route::get('/plans/current', [\App\Http\Controllers\Api\PlanController::class , 'current']);
+
+    // User Progress
+    Route::get('/progress', [\App\Http\Controllers\Api\ProgressController::class , 'index']);
+    Route::post('/progress', [\App\Http\Controllers\Api\ProgressController::class , 'update']);
+
+    // Lessons (Static Data)
+    Route::get('/levels', [\App\Http\Controllers\Api\LessonController::class , 'listLevels']);
+    Route::get('/levels/{level}', [\App\Http\Controllers\Api\LessonController::class , 'getLevelData']);
 });
