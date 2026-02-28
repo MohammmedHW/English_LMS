@@ -23,16 +23,30 @@ class LessonController extends Controller
 
     public function getLevelData($level_name)
     {
-        $path = "lessons/{$level_name}.json";
+        // Normalize: lowercase, hyphens and spaces to underscores
+        $normalizedName = str_replace(['-', ' '], '_', strtolower($level_name));
 
-        if (!Storage::disk('local')->exists($path)) {
+        $paths = [
+            "lessons/{$normalizedName}.json",
+            "lessons/{$normalizedName}_level.json"
+        ];
+
+        $foundPath = null;
+        foreach ($paths as $path) {
+            if (Storage::disk('local')->exists($path)) {
+                $foundPath = $path;
+                break;
+            }
+        }
+
+        if (!$foundPath) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Level data not found'
+                'message' => "Level data not found for: {$level_name} (checked: " . implode(', ', $paths) . ")"
             ], 404);
         }
 
-        $data = json_decode(Storage::disk('local')->get($path), true);
+        $data = json_decode(Storage::disk('local')->get($foundPath), true);
 
         return response()->json([
             'status' => 'success',
