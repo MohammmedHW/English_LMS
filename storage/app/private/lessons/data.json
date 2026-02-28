@@ -1,0 +1,442 @@
+{
+  "levels": [
+    {
+      "id": 1,
+      "title": "Level 1: Fundamentals",
+      "lessons": [
+        {
+          "id": 1,
+          "title": "English Alphabet & Sounds",
+          "description": "Master phonics, vowels, and basic spelling.",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "Which of these is a 'Vowel'?",
+              "options": [
+                {"text": "B", "isCorrect": false},
+                {"text": "E", "isCorrect": true},
+                {"text": "M", "isCorrect": false},
+                {"text": "Z", "isCorrect": false}
+              ]
+            },
+            {
+              "id": 2,
+              "type": "fill_blank",
+              "question": "The word 'Apple' starts with the letter ____.",
+              "options": [{"text": "A", "isCorrect": true}]
+            },
+            {
+              "id": 3,
+              "type": "match_pair",
+              "question": "Match Upper Case with Lower Case.",
+              "options": [
+                {"text": "G", "match": "g"},
+                {"text": "Q", "match": "q"},
+                {"text": "R", "match": "r"},
+                {"text": "D", "match": "d"}
+              ]
+            },
+            {
+              "id": 4,
+              "type": "arrange_sentence",
+              "question": "Arrange the letters to spell the sound of a dog:",
+              "options": ["B", "A", "R", "K"]
+            },
+            {
+              "id": 5,
+              "type": "multiple_choice",
+              "question": "Identify the word that starts with a 'Consonant':",
+              "options": [
+                {"text": "Ice", "isCorrect": false},
+                {"text": "Egg", "isCorrect": false},
+                {"text": "Dog", "isCorrect": true},
+                {"text": "Owl", "isCorrect": false}
+              ]
+            },
+            {
+              "id": 6,
+              "type": "fill_blank",
+              "question": "There are ____ letters in the English alphabet.",
+              "options": [{"text": "26", "isCorrect": true}]
+            },
+            {
+              "id": 7,
+              "type": "multiple_choice",
+              "question": "Which letter sounds like 'See'?",
+              "options": [
+                {"text": "S", "isCorrect": false},
+                {"text": "C", "isCorrect": true},
+                {"text": "K", "isCorrect": false},
+                {"text": "Z", "isCorrect": false}
+              ]
+            },
+            {
+              "id": 8,
+              "type": "match_pair",
+              "question": "Match the objects to their starting letter:",
+              "options": [
+                {"text": "Sun", "match": "S"},
+                {"text": "Moon", "match": "M"},
+                {"text": "Tree", "match": "T"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Action Words (Verbs)",
+          "description": "Understanding physical and mental actions.",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "Which action do you do with your 'Eyes'?",
+              "options": [
+                {"text": "Listen", "isCorrect": false},
+                {"text": "See", "isCorrect": true},
+                {"text": "Taste", "isCorrect": false},
+                {"text": "Walk", "isCorrect": false}
+              ]
+            },
+            {
+              "id": 2,
+              "type": "fill_blank",
+              "question": "Birds ____ in the sky.",
+              "options": [
+                {"text": "fly", "isCorrect": true},
+                {"text": "swim", "isCorrect": false},
+                {"text": "run", "isCorrect": false}
+              ]
+            },
+            {
+              "id": 3,
+              "type": "multiple_choice",
+              "question": "Identify the 'Odd one out' (Which is NOT a verb?):",
+              "options": [
+                {"text": "Jump", "isCorrect": false},
+                {"text": "Sing", "isCorrect": false},
+                {"text": "Yellow", "isCorrect": true},
+                {"text": "Eat", "isCorrect": false}
+              ]
+            },
+            {
+              "id": 4,
+              "type": "arrange_sentence",
+              "question": "Arrange to show a habit:",
+              "options": ["I", "drink", "water", "daily"]
+            },
+            {
+              "id": 5,
+              "type": "match_pair",
+              "question": "Match the person to the action they usually do:",
+              "options": [
+                {"text": "Chef", "match": "Cooks"},
+                {"text": "Teacher", "match": "Teaches"},
+                {"text": "Driver", "match": "Drives"}
+              ]
+            },
+            {
+              "id": 6,
+              "type": "fill_blank",
+              "question": "Please ____ the door. It is cold outside.",
+              "options": [
+                {"text": "close", "isCorrect": true},
+                {"text": "open", "isCorrect": false}
+              ]
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Travel & Transportation",
+          "description": "Learn how to navigate airports, train stations, and public transport.",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "If your flight is 'Delayed', it means:",
+              "options": [
+                {
+                  "text": "It is cancelled",
+                  "isCorrect": false
+                },
+                {
+                  "text": "It will leave later than planned",
+                  "isCorrect": true
+                },
+                {
+                  "text": "It is arriving early",
+                  "isCorrect": false
+                },
+                {
+                  "text": "The plane is full",
+                  "isCorrect": false
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "type": "fill_blank",
+              "question": "I need to ____ my luggage at the check-in desk.",
+              "options": [
+                {
+                  "text": "drop",
+                  "isCorrect": true
+                },
+                {
+                  "text": "give",
+                  "isCorrect": false
+                },
+                {
+                  "text": "lose",
+                  "isCorrect": false
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "type": "match_pair",
+              "question": "Match the travel document to its use:",
+              "options": [
+                {
+                  "text": "Passport",
+                  "match": "Identity"
+                },
+                {
+                  "text": "Ticket",
+                  "match": "Entry"
+                },
+                {
+                  "text": "Visa",
+                  "match": "Permission"
+                },
+                {
+                  "text": "Boarding Pass",
+                  "match": "Plane Access"
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "type": "arrange_sentence",
+              "question": "Ask about the bus timing:",
+              "options": [
+                "When",
+                "does",
+                "the",
+                "next",
+                "bus",
+                "arrive?"
+              ]
+            },
+            {
+              "id": 5,
+              "type": "multiple_choice",
+              "question": "What is a 'Round-trip' ticket?",
+              "options": [
+                {
+                  "text": "A ticket for two people",
+                  "isCorrect": false
+                },
+                {
+                  "text": "A ticket to go and come back",
+                  "isCorrect": true
+                },
+                {
+                  "text": "A ticket for a circular bus",
+                  "isCorrect": false
+                }
+              ]
+            },
+            {
+              "id": 6,
+              "type": "fill_blank",
+              "question": "Please fasten your ____ before takeoff.",
+              "options": [
+                {
+                  "text": "seatbelt",
+                  "isCorrect": true
+                },
+                {
+                  "text": "chair",
+                  "isCorrect": false
+                },
+                {
+                  "text": "bag",
+                  "isCorrect": false
+                }
+              ]
+            },
+            {
+              "id": 7,
+              "type": "multiple_choice",
+              "question": "The place where you wait for a train is the:",
+              "options": [
+                {
+                  "text": "Aisle",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Platform",
+                  "isCorrect": true
+                },
+                {
+                  "text": "Gate",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Port",
+                  "isCorrect": false
+                }
+              ]
+            },
+            {
+              "id": 8,
+              "type": "match_pair",
+              "question": "Match the transport to where it travels:",
+              "options": [
+                {
+                  "text": "Subway",
+                  "match": "Underground"
+                },
+                {
+                  "text": "Ferry",
+                  "match": "Water"
+                },
+                {
+                  "text": "Helicopter",
+                  "match": "Air"
+                },
+                {
+                  "text": "Tram",
+                  "match": "Rails on Street"
+                }
+              ]
+            },
+            {
+              "id": 9,
+              "type": "arrange_sentence",
+              "question": "Tell the taxi driver your destination:",
+              "options": [
+                "Please",
+                "take",
+                "me",
+                "to",
+                "the",
+                "airport."
+              ]
+            },
+            {
+              "id": 10,
+              "type": "multiple_choice",
+              "question": "Which of these is 'Public Transport'?",
+              "options": [
+                {
+                  "text": "Bicycle",
+                  "isCorrect": false
+                },
+                {
+                  "text": "City Bus",
+                  "isCorrect": true
+                },
+                {
+                  "text": "Private Car",
+                  "isCorrect": false
+                }
+              ]
+            }
+          ]
+        }
+        ]
+    },
+    {
+      "id": 2,
+      "title": "Level 2: Conversational English",
+      "lessons": [
+        {
+          "id": 201,
+          "title": "Daily Routines & Time",
+          "description": "Talking about your day and using the present simple tense.",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple_choice",
+              "question": "Choose the correct sentence for a repeating habit:",
+              "options": [
+                {"text": "He is play football every Friday.", "isCorrect": false},
+                {"text": "He plays football every Friday.", "isCorrect": true},
+                {"text": "He playing football every Friday.", "isCorrect": false},
+                {"text": "He play football every Friday.", "isCorrect": false}
+              ]
+            },
+            {
+              "id": 2,
+              "type": "fill_blank",
+              "question": "I always ____ my teeth before I go to bed.",
+              "options": [
+                {"text": "brush", "isCorrect": true},
+                {"text": "wash", "isCorrect": false},
+                {"text": "comb", "isCorrect": false}
+              ]
+            },
+            {
+              "id": 3,
+              "type": "match_pair",
+              "question": "Match the time of day with the activity:",
+              "options": [
+                {"text": "7:00 AM", "match": "Wake up"},
+                {"text": "1:00 PM", "match": "Eat lunch"},
+                {"text": "10:00 PM", "match": "Go to sleep"}
+              ]
+            },
+            {
+              "id": 4,
+              "type": "arrange_sentence",
+              "question": "Arrange the question correctly:",
+              "options": ["What", "time", "do", "you", "work?"]
+            },
+            {
+              "id": 5,
+              "type": "multiple_choice",
+              "question": "Which word is a 'Frequency Adverb'?",
+              "options": [
+                {"text": "Quickly", "isCorrect": false},
+                {"text": "Usually", "isCorrect": true},
+                {"text": "Happy", "isCorrect": false},
+                {"text": "Under", "isCorrect": false}
+              ]
+            },
+            {
+              "id": 6,
+              "type": "fill_blank",
+              "question": "Does she ____ coffee in the morning?",
+              "options": [
+                {"text": "drink", "isCorrect": true},
+                {"text": "drinks", "isCorrect": false}
+              ]
+            },
+            {
+              "id": 7,
+              "type": "multiple_choice",
+              "question": "Select the negative form: 'I like apples.'",
+              "options": [
+                {"text": "I not like apples.", "isCorrect": false},
+                {"text": "I don't like apples.", "isCorrect": true},
+                {"text": "I doesn't like apples.", "isCorrect": false}
+              ]
+            },
+            {
+              "id": 8,
+              "type": "arrange_sentence",
+              "question": "Arrange the response:",
+              "options": ["No,", "I", "do", "not", "know."]
+            }
+          ]
+        }
+      ]
+    }
+
+  ]
+
+}

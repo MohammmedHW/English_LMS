@@ -1,0 +1,205 @@
+{
+  "levelId": 1,
+  "title": "Junior",
+  "tag": "Beginner Foundation",
+  "days": [
+    {
+      "day": 1,
+      "lessons": [
+        {
+          "lessonId": 1,
+          "title": "Alphabet A-M & Phonics",
+          "questions": [
+            {
+              "id": 1011,
+              "type": "multiple_choice",
+              "question": "Which letter makes the 'Ah' sound like in Apple?",
+              "options": [
+                { "text": "A", "isCorrect": true },
+                { "text": "B", "isCorrect": false },
+                { "ext": "C", "isCorrect": false }
+              ]
+            },
+            {
+              "id": 1012,
+              "type": "multiple_choice",
+              "question": "Which letter comes after B?",
+              "options": [
+                { "text": "C", "isCorrect": true },
+                { "text": "D", "isCorrect": false },
+                { "text": "A", "isCorrect": false }
+              ]
+            }
+          ]
+        },
+        {
+          "lessonId": 2,
+          "title": "Basic Words: Animals",
+          "questions": [
+            {
+              "id": 1021,
+              "type": "multiple_choice",
+              "question": "Which animal says 'Meow'?",
+              "options": [
+                { "text": "Dog", "isCorrect": false },
+                { "text": "Cat", "isCorrect": true },
+                { "text": "Lion", "isCorrect": false }
+              ]
+            }
+          ]
+        },
+        {
+          "lessonId": 3,
+          "title": "Daily Use: Greetings",
+          "questions": [
+            {
+              "id": 1031,
+              "type": "fill_blank",
+              "question": "Good ____! (Morning/Night)",
+              "options": [{ "text": "morning", "isCorrect": true }]
+            }
+          ]
+        },
+        {
+          "lessonId": 4,
+          "title": "Story: The Happy Bee",
+          "questions": [
+            {
+              "id": 1041,
+              "type": "reading_comprehension",
+              "question": "Read the story:",
+              "data": {
+                "title": "The Happy Bee",
+                "content": "Buzz is a happy bee. He loves yellow flowers."
+              }
+            }
+          ]
+        },
+        {
+          "lessonId": 5,
+          "title": "Picture Learning: My Body",
+          "questions": [
+            {
+              "id": 1051,
+              "type": "multiple_choice",
+              "question": "What do we use to see?",
+              "options": [
+                { "text": "Eyes", "isCorrect": true },
+                { "text": "Ears", "isCorrect": false }
+              ]
+            }
+          ]
+        }
+      ],
+      "test": {
+        "testId": 1,
+        "title": "Day 1 Final Test",
+        "questions": [
+          {
+            "id": 1901,
+            "type": "multiple_choice",
+            "question": "A is for...",
+            "options": [
+              { "text": "Apple", "isCorrect": true },
+              { "text": "Ball", "isCorrect": false }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "day": 2,
+      "lessons": [
+        {
+          "lessonId": 6,
+          "title": "Alphabet N-Z & Phonics",
+          "questions": [
+            {
+              "id": 2061,
+              "type": "multiple_choice",
+              "question": "Which letter sounds like 'Sss'?",
+              "options": [
+                { "text": "S", "isCorrect": true },
+                { "text": "T", "isCorrect": false },
+                { "text": "Z", "isCorrect": false }
+              ]
+            }
+          ]
+        },
+        {
+          "lessonId": 7,
+          "title": "Basic Words: Fruits",
+          "questions": [
+            {
+              "id": 2071,
+              "type": "multiple_choice",
+              "question": "Which fruit is yellow?",
+              "options": [
+                { "text": "Apple", "isCorrect": false },
+                { "text": "Banana", "isCorrect": true },
+                { "text": "Grape", "isCorrect": false }
+              ]
+            }
+          ]
+        },
+        {
+          "lessonId": 8,
+          "title": "Daily Use: Needs",
+          "questions": [
+            {
+              "id": 2081,
+              "type": "fill_blank",
+              "question": "I am ____. I want water.",
+              "options": [{ "text": "thirsty", "isCorrect": true }]
+            }
+          ]
+        },
+        {
+          "lessonId": 9,
+          "title": "Speaking Practice: My Name",
+          "questions": [
+            {
+              "id": 2091,
+              "type": "multiple_choice",
+              "question": "How do you say your name?",
+              "options": [
+                { "text": "My name is...", "isCorrect": true },
+                { "text": "I am from...", "isCorrect": false }
+              ]
+            }
+          ]
+        },
+        {
+          "lessonId": 10,
+          "title": "Picture Learning: My House",
+          "questions": [
+            {
+              "id": 2101,
+              "type": "multiple_choice",
+              "question": "Where do we sleep?",
+              "options": [
+                { "text": "Bedroom", "isCorrect": true },
+                { "text": "Kitchen", "isCorrect": false }
+              ]
+            }
+          ]
+        }
+      ],
+      "test": {
+        "testId": 2,
+        "title": "Day 2 Final Test",
+        "questions": [
+          {
+            "id": 2901,
+            "type": "multiple_choice",
+            "question": "A banana is...",
+            "options": [
+              { "text": "Yellow", "isCorrect": true },
+              { "text": "Red", "isCorrect": false }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
