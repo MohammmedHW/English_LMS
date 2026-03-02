@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Subscription Plans
     Route::get('/plans', [\App\Http\Controllers\Api\PlanController::class , 'index']);
     Route::get('/plans/current', [\App\Http\Controllers\Api\PlanController::class , 'current']);
+    Route::post('/plans/upgrade', [\App\Http\Controllers\Api\PlanController::class , 'upgrade']);
 
     // User Progress
     Route::get('/progress', [\App\Http\Controllers\Api\ProgressController::class , 'index']);

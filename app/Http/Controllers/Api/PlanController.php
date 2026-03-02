@@ -30,4 +30,29 @@ class PlanController extends Controller
             ]
         ]);
     }
+
+    public function upgrade(Request $request)
+    {
+        $request->validate([
+            'subscription_plan_id' => 'required|exists:subscription_plans,id',
+        ]);
+
+        $user = $request->user();
+        $plan = SubscriptionPlan::find($request->subscription_plan_id);
+
+        // Calculate expiry date based on plan duration
+        $expiresAt = $plan->duration_days > 0
+            ? now()->addDays($plan->duration_days)
+            : null;
+
+        $user->subscription_plan_id = $plan->id;
+        $user->subscription_expires_at = $expiresAt;
+        $user->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Subscription upgraded successfully to ' . $plan->name,
+            'user' => $user->load('subscriptionPlan')
+        ]);
+    }
 }
