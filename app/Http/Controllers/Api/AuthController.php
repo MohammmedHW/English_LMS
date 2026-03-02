@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\SubscriptionPlan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
@@ -51,12 +52,15 @@ class AuthController extends Controller
             'password' => 'required|string|min:6',
         ]);
 
+        $freePlan = SubscriptionPlan::where('name', 'Free')->first();
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
             'role' => 'student',
+            'subscription_plan_id' => $freePlan ? $freePlan->id : null,
         ]);
 
         $token = $user->createToken('student_token')->plainTextToken;
