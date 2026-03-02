@@ -6,107 +6,215 @@
     {
       "day": 1,
       "lessons": [
-        {
-          "lessonId": 3011,
-          "title": "Interview English: Tell me about yourself",
-          "questions": [
-            {
-              "id": 30111,
-              "type": "multiple_choice",
-              "question": "What is the best way to start an elevator pitch?",
-              "options": [
-                {
-                  "text": "My name is... and I have X years of experience",
-                  "isCorrect": true
-                },
-                {
-                  "text": "I am looking for any job",
-                  "isCorrect": false
-                },
-                {
-                  "text": "I don't know much about this",
-                  "isCorrect": false
-                }
-              ]
-            },
-            {
-              "id": 30112,
-              "type": "multiple_choice",
-              "question": "Which 'Tell me about yourself' approach is standard?",
-              "options": [
-                {
-                  "text": "Past-Present-Future",
-                  "isCorrect": true
-                },
-                {
-                  "text": "Random facts",
-                  "isCorrect": false
-                },
-                {
-                  "text": "Favorite hobbies",
-                  "isCorrect": false
-                }
-              ]
-            },
-            {
-              "id": 30113,
-              "type": "multiple_choice",
-              "question": "Should you mention personal hobbies in a job interview introduction?",
-              "options": [
-                {
-                  "text": "Only if relevant to culture/soft skills",
-                  "isCorrect": true
-                },
-                {
-                  "text": "Always",
-                  "isCorrect": false
-                },
-                {
-                  "text": "Never",
-                  "isCorrect": false
-                }
-              ]
-            },
-            {
-              "id": 30114,
-              "type": "multiple_choice",
-              "question": "What should be the tone of your introduction?",
-              "options": [
-                {
-                  "text": "Professional and confident",
-                  "isCorrect": true
-                },
-                {
-                  "text": "Arrogant",
-                  "isCorrect": false
-                },
-                {
-                  "text": "Quiet and shy",
-                  "isCorrect": false
-                }
-              ]
-            },
-            {
-              "id": 30115,
-              "type": "multiple_choice",
-              "question": "How long should a standard verbal introduction be?",
-              "options": [
-                {
-                  "text": "1-2 minutes",
-                  "isCorrect": true
-                },
-                {
-                  "text": "10 minutes",
-                  "isCorrect": false
-                },
-                {
-                  "text": "5 seconds",
-                  "isCorrect": false
-                }
-              ]
-            }
-          ]
-        },
+       {
+  "lessonId": 3011,
+  "title": "Interview English: Tell me about yourself",
+  "questions": [
+    {
+      "id": 30111,
+      "type": "multiple_choice",
+      "question": "What is the best way to start an elevator pitch?",
+      "options": [
+        { "text": "My name is... and I have X years of experience", "isCorrect": true },
+        { "text": "I am looking for any job", "isCorrect": false },
+        { "text": "I don't know much about this", "isCorrect": false }
+      ]
+    },
+    {
+      "id": 30112,
+      "type": "multiple_choice",
+      "question": "Which 'Tell me about yourself' approach is standard?",
+      "options": [
+        { "text": "Past-Present-Future", "isCorrect": true },
+        { "text": "Random facts", "isCorrect": false },
+        { "text": "Favorite hobbies", "isCorrect": false }
+      ]
+    },
+    {
+      "id": 30113,
+      "type": "multiple_choice",
+      "question": "Should you mention personal hobbies in a job interview introduction?",
+      "options": [
+        { "text": "Only if relevant to culture/soft skills", "isCorrect": true },
+        { "text": "Always", "isCorrect": false },
+        { "text": "Never", "isCorrect": false }
+      ]
+    },
+    {
+      "id": 30114,
+      "type": "multiple_choice",
+      "question": "What should be the tone of your introduction?",
+      "options": [
+        { "text": "Professional and confident", "isCorrect": true },
+        { "text": "Arrogant", "isCorrect": false },
+        { "text": "Quiet and shy", "isCorrect": false }
+      ]
+    },
+    {
+      "id": 30115,
+      "type": "multiple_choice",
+      "question": "How long should a standard verbal introduction be?",
+      "options": [
+        { "text": "1-2 minutes", "isCorrect": true },
+        { "text": "10 minutes", "isCorrect": false },
+        { "text": "5 seconds", "isCorrect": false }
+      ]
+    },
+
+    {
+      "id": 30116,
+      "type": "multiple_choice",
+      "question": "What should you avoid in your introduction?",
+      "options": [
+        { "text": "Talking negatively about previous employer", "isCorrect": true },
+        { "text": "Mentioning achievements", "isCorrect": false },
+        { "text": "Stating your experience", "isCorrect": false }
+      ]
+    },
+    {
+      "id": 30117,
+      "type": "multiple_choice",
+      "question": "Which is a strong achievement statement?",
+      "options": [
+        { "text": "I increased sales by 30% in one year", "isCorrect": true },
+        { "text": "I worked in sales", "isCorrect": false },
+        { "text": "Sales was my job", "isCorrect": false }
+      ]
+    },
+    {
+      "id": 30118,
+      "type": "multiple_choice",
+      "question": "When ending your introduction, you should:",
+      "options": [
+        { "text": "Connect your goals to the company", "isCorrect": true },
+        { "text": "Ask about salary immediately", "isCorrect": false },
+        { "text": "Stay silent suddenly", "isCorrect": false }
+      ]
+    },
+    {
+      "id": 30119,
+      "type": "multiple_choice",
+      "question": "Body language during introduction should be:",
+      "options": [
+        { "text": "Open posture and steady eye contact", "isCorrect": true },
+        { "text": "Crossed arms", "isCorrect": false },
+        { "text": "Looking at phone", "isCorrect": false }
+      ]
+    },
+    {
+      "id": 30120,
+      "type": "multiple_choice",
+      "question": "Your introduction should focus mainly on:",
+      "options": [
+        { "text": "Professional background", "isCorrect": true },
+        { "text": "Childhood stories", "isCorrect": false },
+        { "text": "Personal problems", "isCorrect": false }
+      ]
+    },
+
+    {
+      "id": 30121,
+      "type": "multiple_choice",
+      "question": "Which tense is commonly used in introduction?",
+      "options": [
+        { "text": "Present simple and present perfect", "isCorrect": true },
+        { "text": "Future continuous only", "isCorrect": false },
+        { "text": "Past perfect only", "isCorrect": false }
+      ]
+    },
+    {
+      "id": 30122,
+      "type": "multiple_choice",
+      "question": "If you are a fresher, you should focus on:",
+      "options": [
+        { "text": "Skills and internships", "isCorrect": true },
+        { "text": "Complaining about no experience", "isCorrect": false },
+        { "text": "Salary expectations", "isCorrect": false }
+      ]
+    },
+    {
+      "id": 30123,
+      "type": "multiple_choice",
+      "question": "What makes an elevator pitch strong?",
+      "options": [
+        { "text": "Clear value proposition", "isCorrect": true },
+        { "text": "Long storytelling", "isCorrect": false },
+        { "text": "Memorized script tone", "isCorrect": false }
+      ]
+    },
+    {
+      "id": 30124,
+      "type": "multiple_choice",
+      "question": "Confidence can be shown by:",
+      "options": [
+        { "text": "Clear voice and steady pace", "isCorrect": true },
+        { "text": "Speaking very fast", "isCorrect": false },
+        { "text": "Avoiding eye contact", "isCorrect": false }
+      ]
+    },
+    {
+      "id": 30125,
+      "type": "multiple_choice",
+      "question": "Best closing line example:",
+      "options": [
+        { "text": "I'm excited about how my skills align with this role.", "isCorrect": true },
+        { "text": "That's it.", "isCorrect": false },
+        { "text": "Okay bye.", "isCorrect": false }
+      ]
+    },
+
+    {
+      "id": 30126,
+      "type": "multiple_choice",
+      "question": "What should you research before interview?",
+      "options": [
+        { "text": "Company background", "isCorrect": true },
+        { "text": "Interviewer’s salary", "isCorrect": false },
+        { "text": "Office gossip", "isCorrect": false }
+      ]
+    },
+    {
+      "id": 30127,
+      "type": "multiple_choice",
+      "question": "Which phrase sounds more professional?",
+      "options": [
+        { "text": "I developed and led a project team.", "isCorrect": true },
+        { "text": "I did some team work.", "isCorrect": false },
+        { "text": "I was there.", "isCorrect": false }
+      ]
+    },
+    {
+      "id": 30128,
+      "type": "multiple_choice",
+      "question": "If interviewer interrupts, you should:",
+      "options": [
+        { "text": "Listen carefully and respond politely", "isCorrect": true },
+        { "text": "Continue speaking loudly", "isCorrect": false },
+        { "text": "Get annoyed", "isCorrect": false }
+      ]
+    },
+    {
+      "id": 30129,
+      "type": "multiple_choice",
+      "question": "Your introduction should be:",
+      "options": [
+        { "text": "Tailored to the job role", "isCorrect": true },
+        { "text": "Same for every job", "isCorrect": false },
+        { "text": "Copied from internet", "isCorrect": false }
+      ]
+    },
+    {
+      "id": 30130,
+      "type": "multiple_choice",
+      "question": "Main goal of 'Tell me about yourself' question:",
+      "options": [
+        { "text": "Understand your suitability for role", "isCorrect": true },
+        { "text": "Test your memory", "isCorrect": false },
+        { "text": "Check personal secrets", "isCorrect": false }
+      ]
+    }
+  ]
+},
         {
           "lessonId": 3012,
           "title": "Resume English: Action Verbs",
